@@ -9,6 +9,8 @@
 #include <string>
 #include <vector>
 
+// TODO : Implement a function "getCharacteristicsAsString" (all characteristic as string directly in the vector), to avoid calling repeatedly "getCharacteristicAsString"
+
 class __declspec(dllexport) COFFHeaderParser : public BasicParser
 {
 public:
@@ -58,8 +60,7 @@ protected:
 	size_type lfanewValue_;
 	bool isObjectFile_;
 
-	using IteratableEnumType = IteratableEnum<COFFHeaderField>;
-	using LayoutType = HeaderFieldInfoHolder < COFFHeaderField, IteratableEnumType::toUnderlying(IteratableEnumType::end()) >;
+	using LayoutType = HeaderFieldInfoHolder<COFFHeaderField>;
 	static const LayoutType* layout_;
 };
 

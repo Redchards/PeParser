@@ -36,7 +36,6 @@ private:
 	std::vector<uint8_t> rawBuffer_;
 	size_type currentSectionIndex_;
 
-	using IteratableEnumType = IteratableEnum< SectionHeaderField >;
-	using LayoutType = HeaderFieldInfoHolder< SectionHeaderField, IteratableEnumType::toUnderlying(IteratableEnumType::end()) >;
+	using LayoutType = HeaderFieldInfoHolder<SectionHeaderField>;
 	static const LayoutType* layout_;
 };

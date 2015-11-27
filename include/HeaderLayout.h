@@ -145,10 +145,10 @@ enum class SectionHeaderField : flag_type
 	begin = Name
 };
 
-template<class Enum,
-		 size_t size>
+template<class Enum>
 struct HeaderFieldInfoHolder
 {
+	const size_type size = IteratableEnum<Enum>::toUnderlying(IteratableEnum<Enum>::end());
 	std::array<HeaderField, size> infos;
 
 	constexpr HeaderField operator[](size_t index)
@@ -178,7 +178,7 @@ class HeaderFieldInfos
 				 "The template parameter should be a strongly typed enum.");
 	static_assert(IteratableEnum<Enum>::toUnderlying(IteratableEnum<Enum>::end()) == sizeof...(sizes),
 				 "Error : more sizes than fields");
-	using HolderType = HeaderFieldInfoHolder<Enum, sizeof...(sizes)>;
+	using HolderType = HeaderFieldInfoHolder<Enum>;
 	HolderType holder_;
 	//constexpr std::array<size_t, sizeof...(sizes)> sizeArray{ sizes... };
 

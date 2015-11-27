@@ -80,8 +80,7 @@ class __declspec(dllexport) PEHeaderParser : public COFFHeaderParser
 	private:
 	void init();
 
-	using IteratableEnumType = IteratableEnum<OptionalHeaderField>;
-	using LayoutType = HeaderFieldInfoHolder<OptionalHeaderField, IteratableEnumType::toUnderlying(IteratableEnumType::end())>;
+	using LayoutType = HeaderFieldInfoHolder<OptionalHeaderField>;
 	const LayoutType* layout_;
 	//static DataDirectoryTable table_;
 
