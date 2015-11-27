@@ -18,7 +18,7 @@ The library is considered in an "usable but highly incomplete" state right now. 
 - Complete the section header parser, and optimize it.
 - Implement compilation object files section parsing.
 - Find a better way to define header layout (less ugly synthax).
-- A -LOT- of code cleaning.
+- A _LOT_ of code cleaning.
 
 # How to use
 Using the library is actually pretty simple. Here is an example of accessing the number of section and the file characteristics from a COFF header parser :
