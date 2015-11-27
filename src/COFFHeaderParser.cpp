@@ -57,8 +57,6 @@ size_type COFFHeaderParser::getLfanew() const noexcept
 	return lfanewValue_;
 }
 
-// Go to PeHeaderParser
-
 std::string const COFFHeaderParser::getFileCreationDate()
 {
 	EpochConverter conv(retrieveFieldValue(COFFHeaderField::TimeDateStamp), "%Y-%m-%d %H:%M:%S");
@@ -83,7 +81,20 @@ std::vector<CharacteristicFlag> COFFHeaderParser::getCharacteristics() const
 	return flagVector;
 }
 
-std::string COFFHeaderParser::getCharacteristicAsString(CharacteristicFlag flag) const
+std::vector<std::string> COFFHeaderParser::getCharacteristicsAsString() const
+{
+	std::vector<std::string> characteristicVector;
+	for (auto i : CharacteristicsNameMap)
+	{
+		if (hasCharacteristicFlag(i.first))
+		{
+			characteristicVector.push_back(i.second);
+		}
+	}
+	return characteristicVector;
+}
+
+std::string COFFHeaderParser::characteristicToString(CharacteristicFlag flag) const
 {
 	return CharacteristicsNameMap[flag];
 }
@@ -91,7 +102,11 @@ std::string COFFHeaderParser::getCharacteristicAsString(CharacteristicFlag flag)
 bool COFFHeaderParser::hasCharacteristicFlag(CharacteristicFlag flag) const
 {
 	return hasFlag(fileFlags_, flag);
-	//return ((fileFlags_ & static_cast<size_type>(flag)) == static_cast<size_type>(flag));
+}
+
+bool COFFHeaderParser::isObjectFile() const noexcept
+{
+	return isObjectFile_;
 }
 
 bool COFFHeaderParser::is32bit()
@@ -152,13 +167,11 @@ size_type COFFHeaderParser::retrieveFieldValue(COFFHeaderField field)
 		throw std::ios_base::failure("Error : attempt to read a field without the header parser fully constructed, file had an erroneous lfanew field or is not a PE file.");
 	}
 	HeaderField tmp = layout_->get(field);
-	//std::cout << "COFF : " << tmp.offset << " : " << tmp.size << std::endl;
 	return reader_.retrieveValue(getHeaderStart() + tmp.offset, tmp.size);
 }
 
 void COFFHeaderParser::init()
 {
-	//std::cout << "COFF Init" << std::endl;
 	if (hasDOSSignature())
 	{
 		lfanewValue_ = reader_.retrieveValue(COFFHeaderLayout::lfanew.offset, COFFHeaderLayout::lfanew.size);
@@ -171,5 +184,4 @@ void COFFHeaderParser::init()
 		isObjectFile_ = true;
 		fileFlags_ = 0;
 	}
-	// TODO : Check if fileFlags_ is not 0
 }

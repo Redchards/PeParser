@@ -34,9 +34,11 @@ public:
 	std::string const getMachineName();
 
 	std::vector<CharacteristicFlag> getCharacteristics() const;
-	std::string getCharacteristicAsString(CharacteristicFlag flag) const;
+	std::vector<std::string> getCharacteristicsAsString() const;
+	std::string characteristicToString(CharacteristicFlag flag) const;
 	bool hasCharacteristicFlag(CharacteristicFlag flag) const;
 
+	bool isObjectFile() const noexcept;
 	bool is32bit();
 	bool is64bit();
 	bool isSystemFile();

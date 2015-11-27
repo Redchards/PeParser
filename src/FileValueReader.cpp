@@ -4,39 +4,7 @@
 
 FileValueReaderBase::FileValueReaderBase(const std::string& filename, std::ios_base::openmode flags) : Base(filename, flags) {}
 
-/*FileValueReaderBase::FileValueReaderBase(std::string const& filename, std::ios_base::openmode flags) : fstream_(filename, flags),
-																									   filename_(filename)
-{
-	init();
-}
-
-void FileValueReaderBase::loadFile(std::string const& filename, std::ios_base::openmode flags)
-{
-	unloadFile();
-	fstream_.open(filename, flags);
-	filename_ = filename;
-	init();
-}
-
-void FileValueReaderBase::unloadFile()
-{
-	if (fstream_.is_open())
-	{
-		fstream_.close();
-		filename_ = "";
-	}
-}
-
-void FileValueReaderBase::rewind()
-{
-	fstream_.seekg(0, fstream_.beg);
-}
-
-std::string FileValueReaderBase::getCurrentFileName() const noexcept
-{
-	return filename_;
-}*/
-
+// TODO : Remove maybe ?
 std::unique_ptr<unsigned char> FileValueReaderBase::retrieveRawData(size_type position, size_type size)
 {
 	std::unique_ptr<unsigned char> dataPtr(new unsigned char[size]);

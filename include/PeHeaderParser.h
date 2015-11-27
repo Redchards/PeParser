@@ -73,19 +73,13 @@ class __declspec(dllexport) PEHeaderParser : public COFFHeaderParser
 
 	DataDirectoryEntry retrieveDataDirectoryInfos(DataDirectory entry);
 
-	//size_type RVAtoFileOffset(size_type RVA);
-
-	//size_type retrieveFieldValue(HeaderField field);
-
 	private:
 	void init();
 
 	using LayoutType = HeaderFieldInfoHolder<OptionalHeaderField>;
 	const LayoutType* layout_;
-	//static DataDirectoryTable table_;
 
 	const size_type coffHeaderSize_;
 	size_type dllFlags_;
 	DataDirectoryTable dataDirectoryTable_;
-	//COFFHeaderParser coffParser_;
 };
