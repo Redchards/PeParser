@@ -6,8 +6,8 @@ class __declspec(dllexport) SectionParser : public SectionHeaderParser
 {
 public:
 	SectionParser(const std::string& filename);
-	SectionParser(const PEHeaderParser& parser);
+	SectionParser(PEHeaderParser& parser);
 
-	std::vector<unsigned char> getSectionRawData(size_type index);
-	std::vector<unsigned char> getSectionRawData(const std::string& name);
+	std::vector<unsigned char> retrieveSectionData(size_type index);
+	//std::vector<unsigned char> getSectionRawData(const std::string& name);
 };

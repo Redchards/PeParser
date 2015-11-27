@@ -4,3 +4,4 @@ Release/
 PeParser.vcxproj.user
 ipch/
 PeParser.sdf
+.gitconfig
