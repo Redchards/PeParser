@@ -28,6 +28,7 @@ public:
 	void goToSection(size_type index);
 
 private:
+	void init(COFFHeaderParser& parser);
 	void init(PEHeaderParser& parser);
 	void ensureSectionExists(size_type index);
 

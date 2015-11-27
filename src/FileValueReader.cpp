@@ -2,6 +2,10 @@
 
 #include <FileValueReader.h>
 
+// OPTIMIZATION NOTE : Theres two major optimizations we can perform on this class. First, the most evident one is to buffer the call.
+// Then, we can have one reader by file (not multiplicating readers), by having a static undordered_map of readers, and doing a lookup each time we want to access
+// a file. Supposedly, the lookup will be negated by the read, but this requires benchmark.
+
 FileValueReaderBase::FileValueReaderBase(const std::string& filename, std::ios_base::openmode flags) : Base(filename, flags) {}
 
 // TODO : Remove maybe ?
@@ -22,7 +26,7 @@ std::unique_ptr<unsigned char> FileValueReaderBase::retrieveRawData(size_type po
 	return dataPtr;
 }
 
-std::vector<uint8_t> FileValueReaderBase::retrieveRawBuffer(size_type position, size_type size)
+std::vector<unsigned char> FileValueReaderBase::retrieveRawBuffer(size_type position, size_type size)
 {
 	std::vector<unsigned char> buffer;
 	buffer.resize(size);

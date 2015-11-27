@@ -5,14 +5,19 @@
 const SectionHeaderParser::LayoutType* SectionHeaderParser::layout_{ SectionHeaderLayout::infos.getHolderPtr() };
 
 
-// If is object file need COFF parser.
 SectionHeaderParser::SectionHeaderParser(const std::string& filename) : BasicParser(filename)
 {
-	PEHeaderParser tmp{ filename };
-	init(tmp);
+	COFFHeaderParser tmp{ filename };
+	if (tmp.isObjectFile())
+	{
+		init(tmp);
+	}
+	else
+	{
+		init(PEHeaderParser{ std::move(tmp) });
+	}
 }
 
-// If is object file need COFF parser (a PEParser will refuse to construct anyway).
 SectionHeaderParser::SectionHeaderParser(PEHeaderParser& parser) : BasicParser(parser.getFileName())
 {
 	init(parser);
@@ -50,7 +55,6 @@ std::string SectionHeaderParser::getSectionName(size_type index)
 	HeaderField nameField = layout_->get(SectionHeaderField::Name);
 	std::string tmp;
 	std::vector<unsigned char> vectorBuffer = reader_.retrieveRawBuffer(nameField.offset + reader_.getCurrentPosition(), nameField.size);
-
 	for (auto chr : vectorBuffer)
 	{
 		tmp += static_cast<char>(chr);
@@ -75,6 +79,12 @@ void SectionHeaderParser::goToSection(size_type index)
 		--index;
 	}
 	currentSectionIndex_ = index;
+}
+
+void SectionHeaderParser::init(COFFHeaderParser& parser)
+{
+	sectionBegin_ = parser.getHeaderEnd();
+	numberOfSections_ = parser.getNumberOfSections();
 }
 
 void SectionHeaderParser::init(PEHeaderParser& parser)

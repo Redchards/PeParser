@@ -19,7 +19,11 @@ COFFHeaderParser::COFFHeaderParser(std::string const& filename) : BasicParser(fi
 
 COFFHeaderParser::~COFFHeaderParser()
 {
-	events_.pop_back();
+	// Condition needed because we may have moved the parser
+	if (!events_.empty())
+	{
+		events_.pop_back();
+	}
 }
 
 bool COFFHeaderParser::hasDOSSignature()
@@ -162,7 +166,7 @@ bool COFFHeaderParser::hasDebugSymbols()
 
 size_type COFFHeaderParser::retrieveFieldValue(COFFHeaderField field)
 {
-	if (lfanewValue_ == 0)
+	if (lfanewValue_ == 0 && !isObjectFile())
 	{
 		throw std::ios_base::failure("Error : attempt to read a field without the header parser fully constructed, file had an erroneous lfanew field or is not a PE file.");
 	}

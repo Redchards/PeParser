@@ -5,8 +5,6 @@
 
 #include <PeHeaderParser.h>
 
-//DataDirectoryTable PEHeaderParser::table_ = {};
-
 PEHeaderParser::PEHeaderParser(PEHeaderParser&& other) : COFFHeaderParser(std::move(other)),
 														 layout_(std::move(other.layout_)),
 														 coffHeaderSize_(COFFHeaderParser::layout_->getHeaderSize())
@@ -17,18 +15,25 @@ PEHeaderParser::PEHeaderParser(PEHeaderParser&& other) : COFFHeaderParser(std::m
 PEHeaderParser::PEHeaderParser(std::string const& filename) : COFFHeaderParser(filename),
 															  coffHeaderSize_(COFFHeaderParser::layout_->getHeaderSize())
 {
-	//std::cout << coffHeaderSize_ << std::endl;
 	// Equivalent to do a std::bind(&PEHeaderParser::init, this); but more readable.
 	events_.push_back([this] { this->init(); });
-	//__hook(&EventSource::fileLoadEvent, &event_, &PEHeaderParser::init);
+	init();
+}
+
+PEHeaderParser::PEHeaderParser(COFFHeaderParser&& parser) : COFFHeaderParser(std::move(parser)),
+															coffHeaderSize_(COFFHeaderParser::layout_->getHeaderSize())
+{
+	events_.push_back([this] { this->init(); });
 	init();
 }
 
 PEHeaderParser::~PEHeaderParser()
 {
-	//std::cout << "Unhoook pe" << std::endl;
-	events_.pop_back();
-	//__unhook(&EventSource::fileLoadEvent, &event_, &PEHeaderParser::init);
+	// Condition needed because we may have moved the parser
+	if (!events_.empty())
+	{
+		events_.pop_back();
+	}
 }
 
 size_type PEHeaderParser::retrieveFieldValue(OptionalHeaderField field)
@@ -38,7 +43,6 @@ size_type PEHeaderParser::retrieveFieldValue(OptionalHeaderField field)
 		throw std::ios_base::failure("Error : attempt to read a field without the header parser fully constructed");
 	}
 	HeaderField tmp = layout_->get(field);
-	//std::cout << "PE :" << tmp.offset << " : " << tmp.size << std::endl;
 	return reader_.retrieveValue(getHeaderStart() + tmp.offset, tmp.size);
 }
 

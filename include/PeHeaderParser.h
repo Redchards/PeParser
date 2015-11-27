@@ -44,6 +44,7 @@ class __declspec(dllexport) PEHeaderParser : public COFFHeaderParser
 	PEHeaderParser() = delete;
 	PEHeaderParser(PEHeaderParser&&);
 	PEHeaderParser(std::string const& filename);
+	PEHeaderParser(COFFHeaderParser&&);
 	~PEHeaderParser();
 
 	size_type retrieveFieldValue(OptionalHeaderField field);

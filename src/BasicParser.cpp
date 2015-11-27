@@ -4,11 +4,15 @@
 
 BasicParser::BasicParser(BasicParser&& other) : reader_(std::move(other.reader_)),
 												events_(std::move(other.events_))
-{}
+{
+	events_.clear();
+}
 
 BasicParser::BasicParser(std::string const& filename) : reader_(filename, std::ios::in | std::ios::binary),
 														events_{}
-{}
+{
+	events_.clear();
+}
 
 void BasicParser::loadFile(std::string const& filename)
 {
