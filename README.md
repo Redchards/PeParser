@@ -67,3 +67,6 @@ For example, if your project root directory is "D:\MyProject", the configuration
 ```
 D:\MyProject\Debug\x64\PeParser.dll
 ```
+
+# License
+The project is under the MIT license (see the LICENSE.md for more informations)
