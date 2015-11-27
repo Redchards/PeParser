@@ -30,7 +30,7 @@ Using the library is actually pretty simple. Here is an example of accessing the
 int main()
 {
   COFFHeaderParser parser("pathToYourFile");
-  std::cout << "Number of sections : "parser.getNumberOfSections() << std::endl;
+  std::cout << "Number of sections : " << parser.getNumberOfSections() << std::endl;
   // Alternatively, you can do :
   // parser.retrieveFieldValue(COFFHeaderField::NumberOfSections)
   
