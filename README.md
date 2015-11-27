@@ -61,7 +61,7 @@ Simply opening the solution and building should do the trick. Resulting files wi
 ```
 $(Solution)\$(Configuration)\$(Platform)\PeParser.dll
 ```
-For example, if your project root directory is "D:\MyProjet", the configuration "Debug" and the platform "x64", resulting file will be outputed to
+For example, if your project root directory is "D:\MyProject", the configuration "Debug" and the platform "x64", resulting file will be outputed to
 
 ```
 D:\MyProject\Debug\x64\PeParser.dll
