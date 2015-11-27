@@ -163,9 +163,8 @@
     <ClInclude Include="include\CharToInteger.h" />
     <ClInclude Include="include\COFFHeaderParser.h" />
     <ClInclude Include="include\Configuration.h" />
-    <ClInclude Include="include\ConstexprPair.h" />
+    <ClInclude Include="include\ConstString.h" />
     <ClInclude Include="include\DataDirectoryTable.h" />
-    <ClInclude Include="include\DataTableParser.h" />
     <ClInclude Include="include\DllCharacteristics.h" />
     <ClInclude Include="include\EpochConverter.h" />
     <ClInclude Include="include\FileStream.h" />
@@ -180,6 +179,7 @@
     <ClInclude Include="include\HeaderField.h" />
     <ClInclude Include="include\PeFileParser.h" />
     <ClInclude Include="include\PeHeaderParser.h" />
+    <ClInclude Include="include\SectionCharacteristics.h" />
     <ClInclude Include="include\SectionHeaderParser.h" />
     <ClInclude Include="include\SectionParser.h" />
     <ClInclude Include="include\stdafx.h" />
@@ -190,8 +190,6 @@
     <ClCompile Include="src\BasicParser.cpp" />
     <ClCompile Include="src\Characteristics.cpp" />
     <ClCompile Include="src\COFFHeaderParser.cpp" />
-    <ClCompile Include="src\DataDirectoryTable.cpp" />
-    <ClCompile Include="src\DataTableParser.cpp" />
     <ClCompile Include="src\DllCharacteristics.cpp" />
     <ClCompile Include="src\dllmain.cpp" />
     <ClCompile Include="src\EpochConverter.cpp" />
@@ -202,6 +200,7 @@
     <ClCompile Include="src\MachineID.cpp" />
     <ClCompile Include="src\PeFileParser.cpp" />
     <ClCompile Include="src\PeHeaderParser.cpp" />
+    <ClCompile Include="src\SectionCharacteristics.cpp" />
     <ClCompile Include="src\SectionHeaderParser.cpp" />
     <ClCompile Include="src\SectionParser.cpp" />
     <ClCompile Include="src\stdafx.cpp">

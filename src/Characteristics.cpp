@@ -2,7 +2,8 @@
 
 #include <Characteristics.h>
 
-std::map<CharacteristicFlag, std::string> CharacteristicsNameMap {
+std::map<CharacteristicFlag, std::string> CharacteristicsNameMap
+{
 	{CharacteristicFlag::noReloc, "No Relocations"},
 	{CharacteristicFlag::executable, "Executable image file"},
 	{CharacteristicFlag::noLineNumber, "No line number"},
@@ -17,5 +18,5 @@ std::map<CharacteristicFlag, std::string> CharacteristicsNameMap {
 	{CharacteristicFlag::unicoreOnly, "Run only on unicore CPU"},
 	{CharacteristicFlag::bigEndian, "Big endian"},
 	{CharacteristicFlag::littleEndian, "Little endian"},
-	{ CharacteristicFlag::aggressiveStrip, "Aggressive stripping" }
+	{CharacteristicFlag::aggressiveStrip, "Aggressive stripping"}
 };

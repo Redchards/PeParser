@@ -1,0 +1,45 @@
+#include "stdafx.h"
+
+#include <SectionCharacteristics.h>
+
+std::map<SectionCharacteristicFlag, ConstString> sectionCharacteristicsNameMap
+{
+	{SectionCharacteristicFlag::noPad, "Reserved"},
+	{SectionCharacteristicFlag::code, "Code"},
+	{SectionCharacteristicFlag::initializedData, "Initialized data"},
+	{SectionCharacteristicFlag::uninitializedData, "Uninitialized data"},
+	{SectionCharacteristicFlag::linkOther, "Reserved"},
+	{SectionCharacteristicFlag::linkRemove, "Removed from image"},
+	{SectionCharacteristicFlag::linkComdat, "Comdat information"},
+	{SectionCharacteristicFlag::noExceptionDefer, "No exception defering"},
+	{SectionCharacteristicFlag::gpRelative, "GP relative"},
+	{SectionCharacteristicFlag::farData, "Far data"},
+	{SectionCharacteristicFlag::purgeable, "Purgeable"},
+	{SectionCharacteristicFlag::is16bit, "16 bit"},
+	{SectionCharacteristicFlag::locked, "Locked"},
+	{SectionCharacteristicFlag::preload, "Preloaded"},
+	{SectionCharacteristicFlag::align1byte, "1 byte aligned"},
+	{SectionCharacteristicFlag::align2bytes, "2 bytes aligned"},
+	{SectionCharacteristicFlag::align4bytes, "4 bytes aligned"},
+	{SectionCharacteristicFlag::align8bytes, "8 bytes aligned"},
+	{SectionCharacteristicFlag::align16bytes, "16 bytes aligned"},
+	{SectionCharacteristicFlag::align32bytes, "32 bytes aligned"},
+	{SectionCharacteristicFlag::align64bytes, "64 bytes aligned"},
+	{SectionCharacteristicFlag::align128bytes, "128 bytes aligned"},
+	{SectionCharacteristicFlag::align256bytes, "256 bytes aligned"},
+	{SectionCharacteristicFlag::align512bytes, "512 bytes aligned"},
+	{SectionCharacteristicFlag::align1024bytes, "1024 bytes aligned"},
+	{SectionCharacteristicFlag::align2048bytes, "2048bytes aligned"},
+	{SectionCharacteristicFlag::align4096bytes, "40196bytes aligned"},
+	{SectionCharacteristicFlag::align8192bytes, "8192bytes aligned"},
+	{SectionCharacteristicFlag::alignMask, "Alignement mask"},
+	{SectionCharacteristicFlag::extendedRelocations, "Extended relocations"},
+	{SectionCharacteristicFlag::discardable, "Discardable"},
+	{SectionCharacteristicFlag::notCached, "Not cached"},
+	{SectionCharacteristicFlag::notPaged, "Not paged"},
+	{SectionCharacteristicFlag::shared, "Shared"},
+	{SectionCharacteristicFlag::executable, "Executable"},
+	{SectionCharacteristicFlag::readable, "Readable"},
+	{SectionCharacteristicFlag::writable, "Writable"},
+	{SectionCharacteristicFlag::tlsIndexScaled, "TLS index scaled"}
+};

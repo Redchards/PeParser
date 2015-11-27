@@ -20,8 +20,8 @@ struct DataDirectoryEntry
 
 enum class DataDirectory : flag_type
 {
-	export = 0,
-	import,
+	exports = 0, // exports instead of export, because visual studio won't let me do this right know. Sounds like a bug (was working in previous version, and other compilers)
+	imports,
 	resource,
 	exception,
 	certificate,
@@ -38,45 +38,7 @@ enum class DataDirectory : flag_type
 	reserved,
 
 	end,
-	begin = export
+	begin = exports
 };
 
 using DataDirectoryTable = IteratableEnum<DataDirectory>;
-
-/*class DataDirectoryTable
-{
-	enum class DataDirectory : flag_type;
-
-public:
-	constexpr DataDirectoryTable() = default;
-
-	DataDirectory operator*(DataDirectoryTable falsePointer) const;
-	static DataDirectory begin();
-	static DataDirectory end();
-	size_type findPosition(DataDirectory dir) const;
-	DataDirectory const at(size_type const position) const;
-	size_type size() const;
-
-	enum class DataDirectory : flag_type
-	{
-		export = 0,
-		import,
-		resource,
-		exception,
-		certificate,
-		relocation,
-		debug,
-		architecture,
-		globalPointer,
-		tls,
-		WinNTConfig,
-		boundImport,
-		importAddress,
-		importDelay,
-		clr,
-		reserved,
-
-		begin_ = export,
-		end_ = reserved
-	};
-};*/

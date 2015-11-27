@@ -30,9 +30,6 @@
     <ClInclude Include="include\MachineID.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="include\ConstexprPair.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="include\EpochConverter.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
@@ -75,9 +72,6 @@
     <ClInclude Include="include\PeFileParser.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="include\DataTableParser.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="include\FileValueWriter.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
@@ -94,6 +88,12 @@
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="include\IteratableEnum.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SectionCharacteristics.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ConstString.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
@@ -119,9 +119,6 @@
     <ClCompile Include="src\PeHeaderParser.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="src\DataDirectoryTable.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="src\GUISubsystem.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
@@ -140,9 +137,6 @@
     <ClCompile Include="src\PeFileParser.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="src\DataTableParser.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="src\FileValueWriter.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
@@ -150,6 +144,9 @@
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="src\SectionParser.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SectionCharacteristics.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>

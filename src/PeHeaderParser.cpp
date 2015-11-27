@@ -1,6 +1,3 @@
-// PeParser.cpp : définit les fonctions exportées pour l'application DLL.
-//
-
 #include <stdafx.h>
 
 #include <PeHeaderParser.h>
@@ -150,33 +147,17 @@ size_type PEHeaderParser::numberOfDataDirectories()
 	return retrieveFieldValue(OptionalHeaderField::NumberOfRvaAndSizes);
 }
 
-/*size_type PEHeaderParser::retrieveFieldValue(HeaderField field)
-{
-	if (getLfanew() == 0)
-	{
-		throw std::ios_base::failure("Error : attempt to read a field without the header parser fully constructed");
-	}
-	return reader_.retrieveValue(getHeaderStart() + field.offset, field.size);
-}*/
-
 DataDirectoryEntry PEHeaderParser::retrieveDataDirectoryInfos(DataDirectory entry)
 {
-	// TODO : Maybe replace getHeaderEnd() by a const value.
 	const size_t tableOffset = getHeaderEnd() + (dataDirectoryTable_.findPosition(entry)*sizeof(DataDirectoryEntry));
 	return{
 		static_cast<uint32_t>(reader_.retrieveValue(tableOffset, sizeof(DataDirectoryEntry::RVA))),
 		static_cast<uint32_t>(reader_.retrieveValue(tableOffset + sizeof(DataDirectoryEntry::RVA), sizeof(DataDirectoryEntry::size)))
 	};
-	//reader_.retrieveValue(getHeaderEnd(), sizeof(DataDirectoryEntry));
 }
 
 void PEHeaderParser::init()
 {
-	//std::cout << "PE Init" << std::endl;
-	// TODO : Adapt this to the file type;
-
-	//lfanewValue_ = reader_.retrieveValue(layout_.lfanew.offset, layout_.lfanew.size);
-	//std::cout << "lfanew" << lfanewValue_ << std::endl;
 	if (getLfanew() == 0)
 	{
 		throw std::ios_base::failure("Error : bad lfanew value detected. If it is a PE file, it may be corrupted.");
@@ -191,10 +172,7 @@ void PEHeaderParser::init()
 		layout_ = OptionalHeaderLayout<CPUSize::CPU64>::infos.getHolderPtr();
 	}
 	bool objectFile = false;
-	/*if (!hasDOSSignature())
-	{
-		throw std::ios_base::failure("Error : this file is either not a PE file, or is corrupted !");
-	}*/
+
 	if (!hasPESignature())
 	{
 		throw std::ios_base::failure("Error : No PE signature detected. If it is a PE file, it may be corrupted.");
@@ -205,7 +183,6 @@ void PEHeaderParser::init()
 	}
 
 	dllFlags_ = retrieveFieldValue(OptionalHeaderField::DllCharacteristics);
-	//fileFlags_ = retrieveFieldValue(layout_.characteristics);
 }
 
 

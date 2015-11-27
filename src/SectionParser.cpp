@@ -12,6 +12,6 @@ std::vector<unsigned char> SectionParser::retrieveSectionData(size_type index)
 {
 	size_type addr = retrieveFieldValue(index, SectionHeaderField::PointerToRawData);
 	size_type size = retrieveFieldValue(index, SectionHeaderField::SizeOfRawData);
-	std::cout << addr << ":" << size << std::endl;
+
 	return reader_.retrieveRawBuffer(addr, size);
 }
