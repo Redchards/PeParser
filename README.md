@@ -36,9 +36,9 @@ int main()
   // parser.retrieveFieldValue(COFFHeaderField::NumberOfSections)
   
   std::cout << "Now displaying file characteristics :" << std::endl;
-  for(auto characteristic : parser.getCharacteristics())
+  for(auto characteristic : parser.getCharacteristicsAsString())
   {
-    std::cout << "- " << parser.getCharacteristicAsString(characteristic);
+    std::cout << "- " << characteristic;
   }
   std::cout << std::endl;
 }
