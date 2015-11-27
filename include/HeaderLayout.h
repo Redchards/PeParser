@@ -148,7 +148,7 @@ enum class SectionHeaderField : flag_type
 template<class Enum>
 struct HeaderFieldInfoHolder
 {
-	const size_type size = IteratableEnum<Enum>::toUnderlying(IteratableEnum<Enum>::end());
+	static constexpr size_type size = IteratableEnum<Enum>::toUnderlying(IteratableEnum<Enum>::end());
 	std::array<HeaderField, size> infos;
 
 	constexpr HeaderField operator[](size_t index)

@@ -4,6 +4,9 @@
 
 // Obligated static initialization, until C++ got a more convenient way to do this ... (in class initialization !!!)
 
+/*template<class Enum>
+constexpr size_type HeaderFieldInfoHolder<Enum>::size;*/
+
 const HeaderField COFFHeaderLayout::lfanew{ 60, 4 };
 const std::array<flag_type, 3> COFFHeaderLayout::magicNumberPossibleValues{ 0x010b, 0x020b, 0x0107 };
 const COFFHeaderLayout::InfoType COFFHeaderLayout::infos{};
