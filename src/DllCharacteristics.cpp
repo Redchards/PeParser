@@ -2,7 +2,7 @@
 
 #include <DllCharacteristics.h>
 
-std::map<DllCharacteristicFlag, std::string> DllCharacteristicsNameMap
+std::map<DllCharacteristicFlag, ConstString> DllCharacteristicsNameMap
 {
 	{DllCharacteristicFlag::processInit, "Process initialisation routine"},
 	{DllCharacteristicFlag::processTerm, "Process termination routine"},

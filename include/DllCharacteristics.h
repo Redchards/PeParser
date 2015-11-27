@@ -1,9 +1,9 @@
 #pragma once
 
 #include <Configuration.h>
+#include <ConstString.h>
 
 #include <map>
-#include <string>
 
 #include <winnt.h>
 
@@ -16,8 +16,8 @@
 // according to the documentation, they can be present.
 #define IMAGE_LIBRARY_PROCESS_INIT 1
 #define IMAGE_LIBRARY_PROCESS_TERM 2
-#define IMAGE_LIBRARY_THREAD_INIT 4
-#define IMAGE_LIBRARY_THREAD_TERM 8
+#define IMAGE_LIBRARY_THREAD_INIT  4
+#define IMAGE_LIBRARY_THREAD_TERM  8
 
 enum class DllCharacteristicFlag : flag_type
 {
@@ -38,4 +38,4 @@ enum class DllCharacteristicFlag : flag_type
 	serverAware    = IMAGE_DLLCHARACTERISTICS_TERMINAL_SERVER_AWARE
 };
 
-extern std::map<DllCharacteristicFlag, std::string> DllCharacteristicsNameMap;
+extern std::map<DllCharacteristicFlag, ConstString> DllCharacteristicsNameMap;

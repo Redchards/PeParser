@@ -31,11 +31,11 @@ public:
 	size_type getLfanew() const noexcept;
 
 	std::string const getFileCreationDate();
-	std::string const getMachineName();
+	ConstString const getMachineName();
 
 	std::vector<CharacteristicFlag> getCharacteristics() const;
-	std::vector<std::string> getCharacteristicsAsString() const;
-	std::string characteristicToString(CharacteristicFlag flag) const;
+	std::vector<ConstString> getCharacteristicsAsString() const;
+	ConstString characteristicToString(CharacteristicFlag flag) const;
 	bool hasCharacteristicFlag(CharacteristicFlag flag) const;
 
 	bool isObjectFile() const noexcept;

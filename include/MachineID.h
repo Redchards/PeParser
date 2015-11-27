@@ -1,9 +1,9 @@
 #pragma once
 
 #include <Configuration.h>
+#include <ConstString.h>
 
 #include <map>
-#include <string>
 
 // The way machine type enum is presented is not satisfying. So here is a little enum to make everything clearer
 // Also, strongly typed enum ennsure that we are dealing with the right type of data
@@ -94,4 +94,4 @@ enum class MachineID : flag_type
 	cef = IMAGE_FILE_MACHINE_CEF
 };
 
-extern std::map<MachineID, std::string> machineNameMap;
+extern std::map<MachineID, ConstString> machineNameMap;

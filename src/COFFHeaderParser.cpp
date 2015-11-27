@@ -67,9 +67,9 @@ std::string const COFFHeaderParser::getFileCreationDate()
 	return conv.ToDate();
 }
 
-std::string const COFFHeaderParser::getMachineName()
+ConstString const COFFHeaderParser::getMachineName()
 {
-	return machineNameMap.at(getMachineID());
+	return machineNameMap[getMachineID()];
 }
 
 std::vector<CharacteristicFlag> COFFHeaderParser::getCharacteristics() const
@@ -85,9 +85,9 @@ std::vector<CharacteristicFlag> COFFHeaderParser::getCharacteristics() const
 	return flagVector;
 }
 
-std::vector<std::string> COFFHeaderParser::getCharacteristicsAsString() const
+std::vector<ConstString> COFFHeaderParser::getCharacteristicsAsString() const
 {
-	std::vector<std::string> characteristicVector;
+	std::vector<ConstString> characteristicVector;
 	for (auto i : CharacteristicsNameMap)
 	{
 		if (hasCharacteristicFlag(i.first))
@@ -98,7 +98,7 @@ std::vector<std::string> COFFHeaderParser::getCharacteristicsAsString() const
 	return characteristicVector;
 }
 
-std::string COFFHeaderParser::characteristicToString(CharacteristicFlag flag) const
+ConstString COFFHeaderParser::characteristicToString(CharacteristicFlag flag) const
 {
 	return CharacteristicsNameMap[flag];
 }

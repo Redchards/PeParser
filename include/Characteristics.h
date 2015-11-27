@@ -1,9 +1,9 @@
 #pragma once
 
 #include <Configuration.h>
+#include <ConstString.h>
 
 #include <map>
-#include <string>
 
 // As for MachineID, we are creating a strongly typed enum to ensure we are dealing with the right data
 // Values and meaning found here :
@@ -32,4 +32,4 @@ enum class CharacteristicFlag : flag_type
 	aggressiveStrip   = IMAGE_FILE_AGGRESIVE_WS_TRIM // The mistype is present in the winnt.h macro
 };
 
-extern std::map<CharacteristicFlag, std::string> CharacteristicsNameMap;
+extern std::map<CharacteristicFlag, ConstString> CharacteristicsNameMap;
