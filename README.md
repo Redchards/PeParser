@@ -56,6 +56,7 @@ Also note that there's multiple ways to access the data. The most versatile way 
 More examples to come ...
 
 # Building
+To build the project, you'll need Visual Studio 2015. There's no linux port for the good reason that PE files on linux are pretty rare (they do not exist at all in fact), so this would be a pointless effort.
 Simply opening the solution and building should do the trick. Resulting files will then bu outputed to :
 ```
 $(Solution)\$(Configuration)\$(Platform)\PeParser.dll
