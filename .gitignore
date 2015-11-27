@@ -1,0 +1,6 @@
+Debug/
+Release/
+.vs/
+PeParser.vcxproj.user
+ipch/
+PeParser.sdf
