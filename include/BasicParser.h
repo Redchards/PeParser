@@ -16,6 +16,6 @@ public:
 	std::string getFileName() const noexcept;
 
 protected:
-	FileValueReader<Endianess::little> reader_;
+	FileReader reader_;
 	std::vector<std::function<void()>> events_;
 };

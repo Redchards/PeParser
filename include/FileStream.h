@@ -4,6 +4,7 @@
 
 #include <fstream>
 #include <string>
+#include <vector>
 
 enum class StreamGoal : flag_type
 {
@@ -87,10 +88,13 @@ public:
 		}
 		// So that stream will not interpret "whitespace" bytes as real whitespaces, and remove them.
 		fstream_.unsetf(std::ios::skipws);
+		buffer_.reserve(32768);
+		//fstream_.rdbuf()->pubsetbuf(0, 0);
 	}
 
 private:
 	std::string filename_;
+	std::vector<unsigned char> buffer_;
 
 protected:
 	typename FileStreamSelector<goal>::type fstream_;
