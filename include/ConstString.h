@@ -156,7 +156,7 @@ public:
 	constexpr const_reverse_iterator crend() const noexcept { return rend(); }
 
 private:
-	constexpr bool equalAux(size_type size, const ConstString& rhs)
+	constexpr bool equalAux(size_type size, const ConstString& rhs) const
 	{
 		return size != 0 ? ((*this)[size - 1] == rhs[size - 1] && equalAux(size - 1, rhs)) : true;
 	}

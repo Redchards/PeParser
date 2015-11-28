@@ -122,7 +122,7 @@ std::string PEHeaderParser::getSubsystemName()
 std::vector<DllCharacteristicFlag> PEHeaderParser::getDllCharacteristics() const
 {
 	std::vector<DllCharacteristicFlag> flagVector;
-	for (auto i : DllCharacteristicsNameMap)
+	for (auto i : dllCharacteristicsNameMap)
 	{
 		if (hasDllCharacteristicFlag(i.first))
 		{
@@ -132,9 +132,9 @@ std::vector<DllCharacteristicFlag> PEHeaderParser::getDllCharacteristics() const
 	return flagVector;
 }
 
-std::string PEHeaderParser::getDllCharacteristicAsString(DllCharacteristicFlag flag) const
+ConstString PEHeaderParser::getDllCharacteristicAsString(DllCharacteristicFlag flag) const
 {
-	return DllCharacteristicsNameMap[flag];
+	return dllCharacteristicsNameMap.at(flag);
 }
 
 bool PEHeaderParser::hasDllCharacteristicFlag(DllCharacteristicFlag flag) const

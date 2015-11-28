@@ -75,7 +75,7 @@ ConstString const COFFHeaderParser::getMachineName()
 std::vector<CharacteristicFlag> COFFHeaderParser::getCharacteristics() const
 {
 	std::vector<CharacteristicFlag> flagVector;
-	for (auto i : CharacteristicsNameMap)
+	for (auto i : characteristicsNameMap)
 	{
 		if (hasCharacteristicFlag(i.first))
 		{
@@ -88,7 +88,7 @@ std::vector<CharacteristicFlag> COFFHeaderParser::getCharacteristics() const
 std::vector<ConstString> COFFHeaderParser::getCharacteristicsAsString() const
 {
 	std::vector<ConstString> characteristicVector;
-	for (auto i : CharacteristicsNameMap)
+	for (auto i : characteristicsNameMap)
 	{
 		if (hasCharacteristicFlag(i.first))
 		{
@@ -100,7 +100,7 @@ std::vector<ConstString> COFFHeaderParser::getCharacteristicsAsString() const
 
 ConstString COFFHeaderParser::characteristicToString(CharacteristicFlag flag) const
 {
-	return CharacteristicsNameMap[flag];
+	return characteristicsNameMap.at(flag);
 }
 
 bool COFFHeaderParser::hasCharacteristicFlag(CharacteristicFlag flag) const

@@ -67,7 +67,7 @@ class __declspec(dllexport) PEHeaderParser : public COFFHeaderParser
 
 	// If not a dll, simply returns an empty vector (field should be empty anyway)
 	std::vector<DllCharacteristicFlag> getDllCharacteristics() const;
-	std::string getDllCharacteristicAsString(DllCharacteristicFlag flag ) const;
+	ConstString getDllCharacteristicAsString(DllCharacteristicFlag flag ) const;
 	bool hasDllCharacteristicFlag(DllCharacteristicFlag flag) const;
 
 	size_type numberOfDataDirectories();

@@ -38,4 +38,4 @@ enum class DllCharacteristicFlag : flag_type
 	serverAware    = IMAGE_DLLCHARACTERISTICS_TERMINAL_SERVER_AWARE
 };
 
-extern std::map<DllCharacteristicFlag, ConstString> DllCharacteristicsNameMap;
+extern const std::map<DllCharacteristicFlag, ConstString> dllCharacteristicsNameMap;

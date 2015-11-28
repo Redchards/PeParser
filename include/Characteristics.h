@@ -32,4 +32,4 @@ enum class CharacteristicFlag : flag_type
 	aggressiveStrip   = IMAGE_FILE_AGGRESIVE_WS_TRIM // The mistype is present in the winnt.h macro
 };
 
-extern std::map<CharacteristicFlag, ConstString> CharacteristicsNameMap;
+extern const std::map<CharacteristicFlag, ConstString> characteristicsNameMap;

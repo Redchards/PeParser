@@ -2,7 +2,7 @@
 
 #include <Characteristics.h>
 
-std::map<CharacteristicFlag, ConstString> CharacteristicsNameMap
+const std::map<CharacteristicFlag, ConstString> characteristicsNameMap
 {
 	{CharacteristicFlag::noReloc, "No Relocations"},
 	{CharacteristicFlag::executable, "Executable image file"},
