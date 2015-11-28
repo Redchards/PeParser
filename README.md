@@ -41,6 +41,8 @@ int main()
     std::cout << "- " << characteristic;
   }
   std::cout << std::endl;
+  
+  return 0;
 }
 ```
 
