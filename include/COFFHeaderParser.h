@@ -2,6 +2,7 @@
 
 #include <BasicParser.h>
 #include <Configuration.h>
+#include <Characteristics.h>
 #include <HeaderLayout.h>
 #include <FileValueReader.h>
 #include <MachineID.h>
@@ -53,9 +54,6 @@ public:
 	size_type retrieveFieldValue(COFFHeaderField field);
 
 protected:
-
-	template<typename T>
-	bool hasFlag(size_type allFlags, T flag) const;
 	void init();
 
 	size_type fileFlags_;
@@ -65,9 +63,3 @@ protected:
 	using LayoutType = HeaderFieldInfoHolder<COFFHeaderField>;
 	static const LayoutType* layout_;
 };
-
-template<typename T>
-bool COFFHeaderParser::hasFlag(size_type allFlags, T flag) const
-{
-	return ((allFlags & static_cast<size_type>(flag)) == (static_cast<size_type>(flag)));
-}

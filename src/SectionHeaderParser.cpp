@@ -62,6 +62,42 @@ std::string SectionHeaderParser::getSectionName(size_type index)
 	return tmp;
 }
 
+std::vector<SectionCharacteristicFlag> SectionHeaderParser::getCharacteristics(size_type index)
+{
+	std::vector<SectionCharacteristicFlag> tmp{};
+	for (auto p : sectionCharacteristicsNameMap)
+	{
+		if (hasCharacteristic(index, p.first))
+		{
+			tmp.push_back(p.first);
+		}
+	}
+	return tmp;
+}
+
+std::vector<ConstString> SectionHeaderParser::getCharacteristicsAsString(size_type index)
+{
+	std::vector<ConstString> tmp{};
+	for (auto p : sectionCharacteristicsNameMap)
+	{
+		if (hasCharacteristic(index, p.first))
+		{
+			tmp.push_back(p.second);
+		}
+	}
+	return tmp;
+}
+
+ConstString SectionHeaderParser::characteristicToString(SectionCharacteristicFlag flag) const
+{
+	return sectionCharacteristicsNameMap.at(flag);
+}
+
+bool SectionHeaderParser::hasCharacteristic(size_type index, SectionCharacteristicFlag flag)
+{
+	return hasFlag(retrieveFieldValue(index, SectionHeaderField::Characteristics), flag);
+}
+
 size_type SectionHeaderParser::getNumberOfSections() const noexcept
 {
 	return numberOfSections_;
@@ -85,12 +121,29 @@ void SectionHeaderParser::init(COFFHeaderParser& parser)
 {
 	sectionBegin_ = parser.getHeaderEnd();
 	numberOfSections_ = parser.getNumberOfSections();
+	//initCharacteristics();
 }
 
 void SectionHeaderParser::init(PEHeaderParser& parser)
 {
 	sectionBegin_ = parser.getDataDirectoryEnd();
 	numberOfSections_ = parser.getNumberOfSections();
+	//initCharacteristics();
+}
+
+// Too costly without buffering right now :/
+// Should not use until reader use buffering
+// Eventually, it should never become useful at all.
+void SectionHeaderParser::initCharacteristics()
+{
+	if (numberOfSections_ == 0)
+	{
+		// TODO throw
+	}
+	for (size_type i = 0; i < numberOfSections_; ++i)
+	{
+		characteristicFlags_.push_back(retrieveFieldValue(i, SectionHeaderField::Characteristics));
+	}
 }
 
 void SectionHeaderParser::ensureSectionExists(size_type index)

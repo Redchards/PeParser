@@ -50,4 +50,4 @@ enum class SectionCharacteristicFlag : uint32_t
 	tlsIndexScaled		= IMAGE_SCN_SCALE_INDEX
 };
 
-extern std::map<SectionCharacteristicFlag, ConstString> sectionCharacteristicsNameMap;
+extern const std::map<SectionCharacteristicFlag, ConstString> sectionCharacteristicsNameMap;

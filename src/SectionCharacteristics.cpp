@@ -2,7 +2,7 @@
 
 #include <SectionCharacteristics.h>
 
-std::map<SectionCharacteristicFlag, ConstString> sectionCharacteristicsNameMap
+const std::map<SectionCharacteristicFlag, ConstString> sectionCharacteristicsNameMap
 {
 	{SectionCharacteristicFlag::noPad, "Reserved"},
 	{SectionCharacteristicFlag::code, "Code"},
