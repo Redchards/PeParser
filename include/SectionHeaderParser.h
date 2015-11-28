@@ -42,7 +42,7 @@ private:
 
 	std::streampos sectionBegin_;
 	size_type numberOfSections_;
-	std::vector<uint8_t> rawBuffer_;
+	//std::vector<uint8_t> rawBuffer_;
 	size_type currentSectionIndex_;
 	std::vector<size_type> characteristicFlags_;
 
