@@ -64,28 +64,12 @@ std::string SectionHeaderParser::getSectionName(size_type index)
 
 std::vector<SectionCharacteristicFlag> SectionHeaderParser::getCharacteristics(size_type index)
 {
-	std::vector<SectionCharacteristicFlag> tmp{};
-	for (auto p : sectionCharacteristicsNameMap)
-	{
-		if (hasCharacteristic(index, p.first))
-		{
-			tmp.push_back(p.first);
-		}
-	}
-	return tmp;
+	return Detail::getAllFlags(retrieveFieldValue(index, SectionHeaderField::Characteristics), sectionCharacteristicsNameMap);
 }
 
 std::vector<ConstString> SectionHeaderParser::getCharacteristicsAsString(size_type index)
 {
-	std::vector<ConstString> tmp{};
-	for (auto p : sectionCharacteristicsNameMap)
-	{
-		if (hasCharacteristic(index, p.first))
-		{
-			tmp.push_back(p.second);
-		}
-	}
-	return tmp;
+	return Detail::getAllFlagsAsString(retrieveFieldValue(index, SectionHeaderField::Characteristics), sectionCharacteristicsNameMap);
 }
 
 ConstString SectionHeaderParser::characteristicToString(SectionCharacteristicFlag flag) const
@@ -95,7 +79,7 @@ ConstString SectionHeaderParser::characteristicToString(SectionCharacteristicFla
 
 bool SectionHeaderParser::hasCharacteristic(size_type index, SectionCharacteristicFlag flag)
 {
-	return hasFlag(retrieveFieldValue(index, SectionHeaderField::Characteristics), flag);
+	return Detail::hasFlag(retrieveFieldValue(index, SectionHeaderField::Characteristics), flag);
 }
 
 size_type SectionHeaderParser::getNumberOfSections() const noexcept

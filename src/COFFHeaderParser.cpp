@@ -74,28 +74,12 @@ ConstString const COFFHeaderParser::getMachineName()
 
 std::vector<CharacteristicFlag> COFFHeaderParser::getCharacteristics() const
 {
-	std::vector<CharacteristicFlag> flagVector;
-	for (auto i : characteristicsNameMap)
-	{
-		if (hasCharacteristicFlag(i.first))
-		{
-			flagVector.push_back(i.first);
-		}
-	}
-	return flagVector;
+	return Detail::getAllFlags(fileFlags_, characteristicsNameMap);
 }
 
 std::vector<ConstString> COFFHeaderParser::getCharacteristicsAsString() const
 {
-	std::vector<ConstString> characteristicVector;
-	for (auto i : characteristicsNameMap)
-	{
-		if (hasCharacteristicFlag(i.first))
-		{
-			characteristicVector.push_back(i.second);
-		}
-	}
-	return characteristicVector;
+	return Detail::getAllFlagsAsString(fileFlags_, characteristicsNameMap);
 }
 
 ConstString COFFHeaderParser::characteristicToString(CharacteristicFlag flag) const
@@ -105,7 +89,7 @@ ConstString COFFHeaderParser::characteristicToString(CharacteristicFlag flag) co
 
 bool COFFHeaderParser::hasCharacteristicFlag(CharacteristicFlag flag) const
 {
-	return hasFlag(fileFlags_, flag);
+	return Detail::hasFlag(fileFlags_, flag);
 }
 
 bool COFFHeaderParser::isObjectFile() const noexcept

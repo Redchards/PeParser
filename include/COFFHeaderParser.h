@@ -6,11 +6,10 @@
 #include <HeaderLayout.h>
 #include <FileValueReader.h>
 #include <MachineID.h>
+#include <Utility.h>
 
 #include <string>
 #include <vector>
-
-// TODO : Implement a function "getCharacteristicsAsString" (all characteristic as string directly in the vector), to avoid calling repeatedly "getCharacteristicAsString"
 
 class __declspec(dllexport) COFFHeaderParser : public BasicParser
 {

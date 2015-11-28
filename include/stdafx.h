@@ -27,3 +27,4 @@
 #include <HeaderField.h>
 #include <PeHeaderParser.h>
 #include <SectionHeaderParser.h>
+#include <SectionParser.h>

@@ -121,25 +121,22 @@ std::string PEHeaderParser::getSubsystemName()
 
 std::vector<DllCharacteristicFlag> PEHeaderParser::getDllCharacteristics() const
 {
-	std::vector<DllCharacteristicFlag> flagVector;
-	for (auto i : dllCharacteristicsNameMap)
-	{
-		if (hasDllCharacteristicFlag(i.first))
-		{
-			flagVector.push_back(i.first);
-		}
-	}
-	return flagVector;
+	return Detail::getAllFlags(dllFlags_, dllCharacteristicsNameMap);
 }
 
-ConstString PEHeaderParser::getDllCharacteristicAsString(DllCharacteristicFlag flag) const
+std::vector<ConstString> PEHeaderParser::getDllCharacteristicsAsString() const
+{
+	return Detail::getAllFlagsAsString(dllFlags_, dllCharacteristicsNameMap);
+}
+
+ConstString PEHeaderParser::dllCharacteristicToString(DllCharacteristicFlag flag) const
 {
 	return dllCharacteristicsNameMap.at(flag);
 }
 
 bool PEHeaderParser::hasDllCharacteristicFlag(DllCharacteristicFlag flag) const
 {
-	return hasFlag(dllFlags_, flag);
+	return Detail::hasFlag(dllFlags_, flag);
 }
 
 size_type PEHeaderParser::numberOfDataDirectories()
