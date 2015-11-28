@@ -60,7 +60,7 @@ public:
 public:
 	constexpr IteratableEnum() noexcept = default;
 
-	Enum constexpr operator*() { return begin(); }
+	Enum constexpr operator*() const { return begin(); }
 
 	static constexpr typename std::underlying_type<Enum>::type toUnderlying(Enum param)
 	{

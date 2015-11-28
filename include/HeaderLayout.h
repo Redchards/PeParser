@@ -151,7 +151,7 @@ struct HeaderFieldInfoHolder
 	static constexpr size_type size = IteratableEnum<Enum>::toUnderlying(IteratableEnum<Enum>::end());
 	std::array<HeaderField, size> infos;
 
-	constexpr HeaderField operator[](size_t index)
+	constexpr HeaderField operator[](size_t index) const noexcept
 	{
 		return infos[index];
 	}

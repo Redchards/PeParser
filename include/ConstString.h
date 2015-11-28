@@ -18,13 +18,13 @@ protected:
 		constexpr BaseIterator(const ArrayClass& rhs, indexType index) : it_(rhs), index_(index) {}
 		constexpr BaseIterator(const BaseIterator<false>& other) : it_(other.it_), index_(other.index_) {}
 
-		constexpr bool operator==(const BaseIterator& rhs) { return ((index_ == rhs.index_) && (it_ == rhs.it_)); }
-		constexpr bool operator!=(const BaseIterator& rhs) { return !(*this == rhs); }
+		constexpr bool operator==(const BaseIterator& rhs) const { return ((index_ == rhs.index_) && (it_ == rhs.it_)); }
+		constexpr bool operator!=(const BaseIterator& rhs) const { return !(*this == rhs); }
 
-		constexpr char operator*() { return it_[index_]; }
-		constexpr const char* operator->() { return &(it_[index_]); }
+		constexpr char operator*() const { return it_[index_]; }
+		constexpr const char* operator->() const { return &(it_[index_]); }
 
-		constexpr operator BaseIterator<true>()
+		constexpr operator BaseIterator<true>() const
 		{
 			return{ it_, index_ };
 		}
@@ -42,23 +42,23 @@ protected:
 	public:
 		constexpr Iterator(const ArrayClass& rhs, indexType index) : Base(rhs, index) {}
 		constexpr Iterator(const Iterator<false>& other) : Base(other.it_, other.index_) {}
-		constexpr Iterator& operator++()
+		constexpr Iterator& operator++() const
 		{
 			++(this->index_);
 			return *this;
 		}
-		constexpr Iterator operator++(int)
+		constexpr Iterator operator++(int) const
 		{
 			Iterator tmp{ *this };
 			++(this->index_);
 			return tmp;
 		}
-		constexpr Iterator& operator--()
+		constexpr Iterator& operator--() const
 		{
 			--(this->index_);
 			return *this;
 		}
-		constexpr Iterator operator--(int)
+		constexpr Iterator operator--(int) const
 		{
 			Iterator tmp{ *this };
 			--(this->index_);

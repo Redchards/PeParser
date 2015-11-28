@@ -16,7 +16,7 @@
 // However, PE/COFF files should always be little-endian (Windows is only present on little-endian platforms, except WinCE)
 
 
-class FileValueReaderBase : public FileStreamBase<StreamGoal::read>
+class __declspec(dllexport)  FileValueReaderBase : public FileStreamBase<StreamGoal::read>
 {
 	using Base = FileStreamBase<StreamGoal::read>;
 
@@ -32,7 +32,7 @@ template<Endianess endian = Endianess::little>
 class FileValueReader;
 
 template<>
-class FileValueReader<Endianess::little> : public FileValueReaderBase
+class __declspec(dllexport) FileValueReader<Endianess::little> : public FileValueReaderBase
 {
 public:
 	FileValueReader(const std::string& filename, std::ios::ios_base::openmode flags = std::ios_base::in | std::ios::binary) : FileValueReaderBase(filename, flags)
@@ -61,7 +61,7 @@ public:
 };
 
 template<>
-class FileValueReader<Endianess::big> : public FileValueReaderBase
+class __declspec(dllexport) FileValueReader<Endianess::big> : public FileValueReaderBase
 {
 public:
 	FileValueReader(const std::string& filename, std::ios::ios_base::openmode flags = std::ios_base::in | std::ios::binary) : FileValueReaderBase(filename, flags)
