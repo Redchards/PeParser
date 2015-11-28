@@ -57,8 +57,8 @@ Also note that there's multiple ways to access the data. The most versatile way 
 More examples to come ...
 
 # Building
-To build the project, you'll need Visual Studio 2015. There's no linux port for the good reason that PE files on linux are pretty rare (they do not exist at all in fact), so this would be a pointless effort.
-Simply opening the solution and building should do the trick. Resulting files will then bu outputed to :
+To build the project, you'll need Visual Studio 2015 RC1. There's no linux port for the good reason that PE files on linux are pretty rare (they do not exist at all in fact), so this would be a pointless effort.
+Simply opening the solution and building should do the trick. Resulting files will then be outputed to :
 ```
 $(Solution)\$(Configuration)\$(Platform)\PeParser.dll
 ```
@@ -67,6 +67,8 @@ For example, if your project root directory is "D:\MyProject", the configuration
 ```
 D:\MyProject\Debug\x64\PeParser.dll
 ```
+
+**WARNING** : By default, in dynamic library mod, the library is exported with /MTd (in debug) and /MT (in release) flags, to avoid the whole "template exporting" problem. You may be able to switch them to /MDd and /MD, but I then do no longer guarantee that everything will work, especially when inheriting from Dll's classes and using protected fields. To make it work, you should build the project and your application with the same CRT (Runtime Library), and then nothing should be a problem. You may then remove the C4251 warnings safely.
 
 # License
 The project is under the MIT license (see the LICENSE.md for more informations)
