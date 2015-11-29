@@ -97,7 +97,7 @@ public:
 	FileValueReader(const std::string& filename, std::ios::ios_base::openmode flags = std::ios_base::in | std::ios::binary) : FileValueReaderBase(filename, flags)
 	{}
 
-	size_type retrieveValue(size_type position, size_type size)
+	size_type retrieveValue(std::streampos position, size_type size)
 	{
 		if (size > sizeof(size_type))
 		{
@@ -126,7 +126,7 @@ public:
 	FileValueReader(const std::string& filename, std::ios::ios_base::openmode flags = std::ios_base::in | std::ios::binary) : FileValueReaderBase(filename, flags)
 	{}
 
-	size_type retrieveValue(size_type position, size_type size)
+	size_type retrieveValue(std::streampos position, size_type size)
 	{
 		if (size > sizeof(size_type))
 		{

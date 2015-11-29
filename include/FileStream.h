@@ -4,6 +4,7 @@
 
 #include <fstream>
 #include <string>
+#include <unordered_map>
 #include <vector>
 
 enum class StreamGoal : flag_type
@@ -95,6 +96,7 @@ public:
 private:
 	std::string filename_;
 	std::vector<unsigned char> buffer_;
+	static std::unordered_map<std::string, typename FileStreamSelector<goal>::type> fileStreamMap_;
 
 protected:
 	typename FileStreamSelector<goal>::type fstream_;

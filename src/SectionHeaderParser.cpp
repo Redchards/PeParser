@@ -90,9 +90,6 @@ size_type SectionHeaderParser::getNumberOfSections() const noexcept
 void SectionHeaderParser::goToSection(size_type index)
 {
 	ensureSectionExists(index);
-	HeaderField tmp;
-
-	tmp = layout_->get(SectionHeaderField::VirtualSize);
 	reader_.goTo(getSectionsBegin() + static_cast<std::streampos>(layout_->getHeaderSize()*index));
 
 	currentSectionIndex_ = index;
@@ -102,7 +99,6 @@ void SectionHeaderParser::init(COFFHeaderParser& parser)
 {
 	sectionBegin_ = parser.getHeaderEnd();
 	numberOfSections_ = parser.getNumberOfSections();
-	std::cout << numberOfSections_ << std::endl;
 	//initCharacteristics();
 }
 
@@ -110,7 +106,6 @@ void SectionHeaderParser::init(PEHeaderParser& parser)
 {
 	sectionBegin_ = parser.getDataDirectoryEnd();
 	numberOfSections_ = parser.getNumberOfSections();
-	std::cout << numberOfSections_ << std::endl;
 	//initCharacteristics();
 }
 
