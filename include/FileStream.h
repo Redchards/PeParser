@@ -94,6 +94,39 @@ public:
 	FileStreamSelector(const std::string& filename, std::ios::ios_base::openmode flags) : fstream_(filename, flags)
 	{}
 
+	void write(char* buffer, std::streampos position, size_type size)
+	{
+		goTo(position);
+		fstream_.write(buffer, size);
+	}
+
+	void write(unsigned char* buffer, std::streampos position, size_type size)
+	{
+		write(reinterpret_cast<char*>(buffer), position, size);
+	}
+	template<size_type n>
+	void write(std::array<char, n>& buffer, std::streampos position, size_type size)
+	{
+		write(buffer.data(), position, size);
+	}
+
+	template<size_type n>
+	void write(std::array<unsigned char, n>& buffer, std::streampos position, size_type size)
+	{
+		write(buffer.data(), position, size);
+	}
+
+	void write(std::vector<char>& buffer, std::streampos position, size_type size)
+	{
+		write(buffer.data(), position, size);
+	}
+
+	void write(std::vector<unsigned char>& buffer, std::streampos position, size_type size)
+	{
+		write(buffer.data(), position, size);
+	}
+
+
 	void rewind()
 	{
 		goTo(0);
