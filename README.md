@@ -12,13 +12,9 @@ This library is a collection of parser rather than a single parser, each with di
 Data layout of each header is described in the file *HeaderLayout.h*
 
 # State
-The library is considered in an "usable but highly incomplete" state right now. Some work is still required to be able to develop application like .NET obfuscator or disassembler for examples. Near todos are :
-- Actually implement the section data parser.
-- Add the possibility to buffer the calls.
-- Complete the section header parser, and optimize it.
-- Implement compilation object files section parsing.
-- Find a better way to define header layout (less ugly synthax).
-- A **LOT** of code cleaning.
+The library is considered in an "usable but highly incomplete" state right now. Some work is still required to be able to develop application like .NET obfuscator or disassembler for examples.
+
+**WARNING** : Right now, the library is only able to parse standard PE files (ignoring the Rich header), and the COFF file. I also want to support "import objects" and "anonymous objects", but I lack informations on these right now (even the winnt.h structur seems to be not correct ...)
 
 # How to use
 Using the library is actually pretty simple. Here is an example of accessing the number of section and the file characteristics from a COFF header parser :
@@ -69,8 +65,6 @@ For example, if your project root directory is "D:\MyProject", the configuration
 ```
 D:\MyProject\Debug\x64\PeParser.dll
 ```
-
-**WARNING** : By default, in dynamic library mod, the library is exported with /MTd (in debug) and /MT (in release) flags, to avoid the whole "template exporting" problem. You may be able to switch them to /MDd and /MD, but I then do no longer guarantee that everything will work, especially when inheriting from Dll's classes and using protected fields. To make it work, you should build the project and your application with the same CRT (Runtime Library), and then nothing should be a problem. You may then remove the C4251 warnings safely.
 
 # License
 The project is under the MIT license (see the LICENSE.md for more informations)
