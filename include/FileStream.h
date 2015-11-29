@@ -3,6 +3,7 @@
 #include <Configuration.h>
 
 #include <fstream>
+#include <iterator>
 #include <string>
 #include <unordered_map>
 #include <vector>
@@ -28,6 +29,39 @@ template<>
 struct FileStreamSelector<StreamGoal::write>
 {
 	using type = std::ofstream;
+};
+
+class FileBufferBase
+{
+	using iterator = std::vector<unsigned char>::iterator;
+	using const_iterator = std::vector<unsigned char>::const_iterator;
+	using reverse_iterator = std::vector<unsigned char>::reverse_iterator;
+	using const_reverse_iterator = std::vector<unsigned char>::const_reverse_iterator;
+
+	FileBufferBase() : buffer_(32768)
+	{}
+	FileBufferBase(size_type bufferSize) : buffer_(bufferSize)
+	{}
+
+	iterator begin() noexcept { return buffer_.begin(); }
+	const_iterator cbegin() noexcept { return buffer_.cbegin(); }
+	reverse_iterator rbegin() noexcept { return buffer_.rbegin(); }
+	const_reverse_iterator crbegin() noexcept { return buffer_.crbegin(); }
+
+	iterator end() noexcept { return buffer_.end(); }
+	const_iterator cend() noexcept { return buffer_.cend(); }
+	reverse_iterator rend() noexcept { return buffer_.rend(); }
+	const_reverse_iterator crend() noexcept { return buffer_.crend(); }
+
+private:
+	std::vector<unsigned char> buffer_;
+};
+
+template<StreamGoal goal,
+		 typename = typename std::enable_if<goal == StreamGoal::read>::type>
+struct FileBuffer
+{
+
 };
 
 template<StreamGoal goal>
@@ -58,6 +92,15 @@ public:
 		}
 	}
 
+	void read(char* buffer, std::streampos position, size_type size)
+	{
+		if (!getCurrentPosition() <= position || !(static_cast<size_type>(position - getCurrentPosition()) + size) <= 32768)
+		{
+			std::copy_n(std::istream_iterator<unsigned char>{fstream_}, 32768, buffer_.begin());
+		}
+		std::copy(buffer_.begin(), buffer_.begin() + static_cast<size_type>(position - getCurrentPosition()), buffer);
+	}
+
 	const std::string& getCurrentFileName() const noexcept
 	{
 		return filename_;
@@ -81,6 +124,7 @@ public:
 		return fstream_.tellg();
 	}
 
+private:
 	void init()
 	{
 		if (!fstream_.good())
@@ -89,8 +133,13 @@ public:
 		}
 		// So that stream will not interpret "whitespace" bytes as real whitespaces, and remove them.
 		fstream_.unsetf(std::ios::skipws);
+		fstream_.rdbuf()->pubsetbuf(0, 0);
 		buffer_.reserve(32768);
-		//fstream_.rdbuf()->pubsetbuf(0, 0);
+
+		/*if (goal == StreamGoal::read)
+		{
+			std::copy_n(std::istream_iterator<unsigned char>{fstream_}, 32768, buffer_.begin());
+		}*/
 	}
 
 private:

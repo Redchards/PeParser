@@ -30,11 +30,8 @@ protected:
 	FileValueReaderBase(const std::string& filename, std::ios::ios_base::openmode flags = std::ios_base::in | std::ios::binary);
 
 public:
-	std::unique_ptr<uint8_t> retrieveRawData(size_type position, size_type size);
-	std::vector<uint8_t> retrieveRawBuffer(size_type position, size_type size);
-
-protected:
-	size_type lastReadOffset_;
+	std::unique_ptr<uint8_t> retrieveRawData(std::streampos position, size_type size);
+	std::vector<uint8_t> retrieveRawBuffer(std::streampos position, size_type size);
 
 private:
 	std::vector<unsigned char> buffer_;
@@ -52,7 +49,7 @@ FileValueReaderBase<flag>::FileValueReaderBase(const std::string& filename, std:
 
 // TODO : Remove maybe ?
 template<BufferPolicy flag>
-std::unique_ptr<unsigned char> FileValueReaderBase<flag>::retrieveRawData(size_type position, size_type size)
+std::unique_ptr<unsigned char> FileValueReaderBase<flag>::retrieveRawData(std::streampos position, size_type size)
 {
 	std::unique_ptr<unsigned char> dataPtr(new unsigned char[size]);
 
@@ -70,7 +67,7 @@ std::unique_ptr<unsigned char> FileValueReaderBase<flag>::retrieveRawData(size_t
 }
 
 template<BufferPolicy flag>
-std::vector<unsigned char> FileValueReaderBase<flag>::retrieveRawBuffer(size_type position, size_type size)
+std::vector<unsigned char> FileValueReaderBase<flag>::retrieveRawBuffer(std::streampos position, size_type size)
 {
 	std::vector<unsigned char> buffer;
 	buffer.resize(size);

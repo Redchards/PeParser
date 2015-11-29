@@ -140,10 +140,10 @@ public:
 
 	constexpr size_t size() const noexcept { return size_; }
 
-	using iterator = IterPolicy::iterator;
-	using reverse_iterator = IterPolicy::reverse_iterator;
-	using const_iterator = IterPolicy::const_iterator;
-	using const_reverse_iterator = IterPolicy::const_reverse_iterator;
+	using iterator = typename IterPolicy::iterator;
+	using reverse_iterator = typename IterPolicy::reverse_iterator;
+	using const_iterator = typename IterPolicy::const_iterator;
+	using const_reverse_iterator = typename IterPolicy::const_reverse_iterator;
 
 	constexpr iterator begin() const noexcept { return{ *this, 0 }; }
 	constexpr const_iterator cbegin() const noexcept { return begin(); }
