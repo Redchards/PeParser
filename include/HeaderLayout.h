@@ -151,7 +151,7 @@ struct HeaderFieldInfoHolder
 	static constexpr size_type size = IteratableEnum<Enum>::toUnderlying(IteratableEnum<Enum>::end());
 	std::array<HeaderField, size> infos;
 
-	constexpr HeaderField operator[](size_t index) const noexcept
+	constexpr HeaderField operator[](size_type index) const noexcept
 	{
 		return infos[index];
 	}
@@ -171,7 +171,7 @@ struct HeaderFieldInfoHolder
 };
 
 template<class Enum,
-		 size_t ... sizes >
+		 size_type ... sizes >
 class HeaderFieldInfos
 {
 	static_assert(detail::IsStronglyTypedEnum<Enum>::value,
@@ -185,13 +185,13 @@ class HeaderFieldInfos
 public:
 	HeaderFieldInfos() : holder_(init<sizes...>(std::make_index_sequence<sizeof...(sizes)>{})) {}
 
-	template<size_t ... sizeSeq, size_t ... seq>
+	template<size_type ... sizeSeq, size_type ... seq>
 	HolderType init(std::index_sequence<seq...>) noexcept
 	{
 		return {init(seq, sizeSeq)...};
 	}
 
-	HeaderField init(size_t index, size_t size) noexcept
+	HeaderField init(size_type index, size_type size) noexcept
 	{
 		if (index == 0)
 		{
@@ -203,9 +203,9 @@ public:
 		}
 	}
 
-	constexpr size_t toUnderlying(Enum field) const noexcept
+	constexpr size_type toUnderlying(Enum field) const noexcept
 	{
-		std::underlying_type_t<Enum>(field);
+		return std::underlying_type_t<Enum>(field);
 	}
 
 	HolderType getHolderCpy() const noexcept
@@ -218,7 +218,7 @@ public:
 		return &holder_;
 	}
 
-	const size_type getHeaderSize()
+	size_type getHeaderSize()
 	{
 		return holder_.getHeaderSize();
 	}
