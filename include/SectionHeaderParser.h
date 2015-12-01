@@ -9,7 +9,7 @@
 // NOTE : Could optimize this with a vector of section position, but will not do until it becomes a necessity (bad performances).
 // But once again, we will likely buffer informations, this is not meant to be realtime or something like this.
 
-class __declspec(dllexport) SectionHeaderParser : public BasicParser
+class PE_API SectionHeaderParser : public BasicParser
 {
 public:
 	SectionHeaderParser(const std::string& filename);

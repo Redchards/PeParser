@@ -38,7 +38,7 @@
 // TODO : Section hard limite is 96, add a check for that
 
 // TODO : loadFile and unloadFile won't work properly without virtual init method
-class __declspec(dllexport) PEHeaderParser : public COFFHeaderParser
+class PE_API PEHeaderParser : public COFFHeaderParser
 {
 	public: 
 	PEHeaderParser() = delete;

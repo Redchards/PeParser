@@ -2,7 +2,7 @@
 
 #include <SectionHeaderParser.h>
 
-class __declspec(dllexport) SectionParser : public SectionHeaderParser
+class PE_API SectionParser : public SectionHeaderParser
 {
 public:
 	SectionParser(const std::string& filename);

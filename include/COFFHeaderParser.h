@@ -11,7 +11,7 @@
 #include <string>
 #include <vector>
 
-class __declspec(dllexport) COFFHeaderParser : public BasicParser
+class PE_API COFFHeaderParser : public BasicParser
 {
 public:
 	COFFHeaderParser() = delete;

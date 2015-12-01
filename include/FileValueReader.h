@@ -20,7 +20,7 @@ enum class BufferPolicy : flag_type
 	buffered = true
 };
 
-class __declspec(dllexport)  FileValueReaderBase : public FileStreamBase<StreamGoal::read>
+class PE_API  FileValueReaderBase : public FileStreamBase<StreamGoal::read>
 {
 	using Base = FileStreamBase<StreamGoal::read>;
 
@@ -36,7 +36,7 @@ template<Endianess endian = Endianess::little>
 class FileValueReader;
 
 template<>
-class __declspec(dllexport) FileValueReader<Endianess::little> : public FileValueReaderBase
+class PE_API FileValueReader<Endianess::little> : public FileValueReaderBase
 {
 public:
 	FileValueReader(const std::string& filename, std::ios::ios_base::openmode flags = std::ios_base::in | std::ios::binary) : FileValueReaderBase(filename, flags)
@@ -53,7 +53,7 @@ public:
 		size_type out = 0;
 		read(value, position, size);
 
-		for (int64_t i = size - 1; i >= 0; --i)
+		for (size_type i = size - 1; i != 0; --i)
 		{
 			out |= (value[i] << (i * 8));
 		}
@@ -62,7 +62,7 @@ public:
 };
 
 template<>
-class __declspec(dllexport) FileValueReader<Endianess::big> : public FileValueReaderBase
+class PE_API FileValueReader<Endianess::big> : public FileValueReaderBase
 {
 public:
 	FileValueReader(const std::string& filename, std::ios::ios_base::openmode flags = std::ios_base::in | std::ios::binary) : FileValueReaderBase(filename, flags)
@@ -78,7 +78,7 @@ public:
 		size_type out = 0;
 		read(value, position, size);
 
-		for (uint64_t i = 0; i < size; ++i)
+		for (size_type i = 0; i < size; ++i)
 		{
 			out |= (value[i] << (i * 8));
 		}

@@ -1,7 +1,14 @@
 #pragma once
 
 #include <cstdint>
+#include <Windows.h>
 #include <winnt.h>
+
+#ifdef DLL_EXPORT
+#	define PE_API __declspec(dllexport)
+#else
+#	define PE_API __declspec(dllimport)
+#endif
 
 #ifdef __WIN64
 #	define X64
