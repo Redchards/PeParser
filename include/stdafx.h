@@ -11,7 +11,7 @@
 // Fichiers d'en-tête Windows :
 #include <windows.h>
 
-#include <BasicParser.h>
+/*#include <BasicParser.h>
 #include <Characteristics.h>
 //#include <CharToInteger.h>
 #include <COFFHeaderParser.h>
@@ -27,4 +27,4 @@
 #include <HeaderField.h>
 #include <PeHeaderParser.h>
 #include <SectionHeaderParser.h>
-#include <SectionParser.h>
+#include <SectionParser.h>*/

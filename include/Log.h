@@ -3,7 +3,7 @@
 #include <Configuration.h>
 
 #include <map>
-#include <ostream>
+#include <iostream>
 #include <string>
 #include <utility>
 

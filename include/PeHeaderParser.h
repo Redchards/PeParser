@@ -4,6 +4,7 @@
 #include <COFFHeaderParser.h>
 #include <Configuration.h>
 #include <DataDirectoryTable.h>
+#include <DllCharacteristics.h>
 #include <EpochConverter.h>
 #include <FileValueReader.h>
 #include <GUISubsystem.h>

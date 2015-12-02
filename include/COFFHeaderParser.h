@@ -3,6 +3,7 @@
 #include <BasicParser.h>
 #include <Configuration.h>
 #include <Characteristics.h>
+#include <EpochConverter.h>
 #include <HeaderLayout.h>
 #include <FileValueReader.h>
 #include <MachineID.h>
