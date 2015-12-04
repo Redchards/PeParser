@@ -53,9 +53,9 @@ public:
 		size_type out = 0;
 		read(value, position, size);
 
-		for (size_type i = size - 1; i != 0; --i)
+		for (size_type i = size; i != 0; --i)
 		{
-			out |= (value[i] << (i * 8));
+			out |= (value[i - 1] << ((i - 1) * 8));
 		}
 		return out;
 	}

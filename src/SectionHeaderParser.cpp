@@ -118,7 +118,6 @@ void SectionHeaderParser::initCharacteristics()
 	{
 		// TODO throw
 	}
-	std::cout << numberOfSections_ << std::endl;;
 	for (size_type i = 0; i < numberOfSections_; ++i)
 	{
 		characteristicFlags_.push_back(retrieveFieldValue(i, SectionHeaderField::Characteristics));
