@@ -114,7 +114,7 @@ operator*(Enum falsePointer) { return falsePointer; }
 
 template<class Enum>
 typename std::enable_if<detail::IsStronglyTypedEnum<Enum>::value, Enum>::type
-operator++(Enum& lhs) 
+operator++(Enum& lhs, int) 
 { 
 	Enum tmp = lhs;
 	lhs = static_cast<Enum>(IteratableEnum<Enum>::toUnderlying(lhs) + 1);
@@ -123,11 +123,11 @@ operator++(Enum& lhs)
 
 template<class Enum>
 typename std::enable_if<detail::IsStronglyTypedEnum<Enum>::value, Enum>::type
-operator++(Enum& rhs, int) { return rhs = static_cast<Enum>(IteratableEnum<Enum>::toUnderlying(rhs) + 1); }
+operator++(Enum& rhs) { return rhs = static_cast<Enum>(IteratableEnum<Enum>::toUnderlying(rhs) + 1); }
 
 template<class Enum>
 typename std::enable_if<detail::IsStronglyTypedEnum<Enum>::value, Enum>::type
-operator--(Enum& lhs) 
+operator--(Enum& lhs, int) 
 { 
 	Enum tmp = lhs;
 	lhs = static_cast<Enum>(IteratableEnum<Enum>::toUnderlying(lhs) - 1);
@@ -136,7 +136,7 @@ operator--(Enum& lhs)
 
 template<class Enum>
 typename std::enable_if<detail::IsStronglyTypedEnum<Enum>::value, Enum>::type
-operator--(Enum& rhs, int) { return rhs = static_cast<Enum>(IteratableEnum<Enum>::toUnderlying(rhs) - 1); }
+operator--(Enum& rhs) { return rhs = static_cast<Enum>(IteratableEnum<Enum>::toUnderlying(rhs) - 1); }
 
 template<class Enum>
 typename std::enable_if<detail::IsStronglyTypedEnum<Enum>::value, Enum>::type
