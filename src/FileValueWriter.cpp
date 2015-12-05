@@ -13,24 +13,14 @@ void FileValueWriterBase::checkWrite() const
 	}
 }
 
-void FileValueWriterBase::adjustPosition(std::streampos position) noexcept
-{
-	if (fstream_->tellp() != position)
-	{
-		fstream_->seekp(position);
-	}
-}
-
 void FileValueWriterBase::writeRawDataAt(const std::vector<char>& data, std::streampos position)
 {
-	adjustPosition(position);
-	fstream_->write(data.data(), data.size());
+	write(data, position, data.size());
 	checkWrite();
 }
 
 void FileValueWriterBase::writeRawDataAt(const char* const data, std::streamsize size, std::streampos position)
 {
-	adjustPosition(position);
-	fstream_->write(data, size);
+	write(data, position, size);
 	checkWrite();
 }

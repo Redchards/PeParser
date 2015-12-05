@@ -107,34 +107,34 @@ public:
 		}
 	}
 
-	void write(char* buffer, std::streampos position, size_type size)
+	void write(const char* buffer, std::streampos position, size_type size)
 	{
 		goTo(position);
 		fstream_->write(buffer, size);
 	}
 
-	void write(unsigned char* buffer, std::streampos position, size_type size)
+	void write(const unsigned char* buffer, std::streampos position, size_type size)
 	{
-		write(reinterpret_cast<char*>(buffer), position, size);
+		write(reinterpret_cast<const char*>(buffer), position, size);
 	}
 	template<size_type n>
-	void write(std::array<char, n>& buffer, std::streampos position, size_type size)
+	void write(const std::array<char, n>& buffer, std::streampos position, size_type size)
 	{
 		write(buffer.data(), position, size);
 	}
 
 	template<size_type n>
-	void write(std::array<unsigned char, n>& buffer, std::streampos position, size_type size)
+	void write(const std::array<unsigned char, n>& buffer, std::streampos position, size_type size)
 	{
 		write(buffer.data(), position, size);
 	}
 
-	void write(std::vector<char>& buffer, std::streampos position, size_type size)
+	void write(const std::vector<char>& buffer, std::streampos position, size_type size)
 	{
 		write(buffer.data(), position, size);
 	}
 
-	void write(std::vector<unsigned char>& buffer, std::streampos position, size_type size)
+	void write(const std::vector<unsigned char>& buffer, std::streampos position, size_type size)
 	{
 		write(buffer.data(), position, size);
 	}
@@ -167,8 +167,8 @@ template<StreamGoal goal>
 class FileStreamBase : public FileStreamSelector<goal>
 {
 protected:
-	FileStreamBase(const std::string& filename, std::ios::ios_base::openmode flags) : FileStreamSelector(filename, flags), 
-																					  filename_(filename)
+	FileStreamBase(const std::string& filename, std::ios::ios_base::openmode flags) : FileStreamSelector(filename, flags),
+		filename_(filename)
 	{
 		init();
 	}
@@ -214,5 +214,4 @@ private:
 
 private:
 	std::string filename_;
-	static std::unordered_map<std::string, typename FileStreamSelector<goal>::type> fileStreamMap_;
 };

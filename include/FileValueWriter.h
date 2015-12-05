@@ -15,7 +15,6 @@ protected:
 	FileValueWriterBase(const std::string& filename, std::ios::ios_base::openmode flags = std::ios_base::out);
 
 	void checkWrite() const;
-	void adjustPosition(std::streampos position) noexcept;
 
 public:
 	void writeRawDataAt(const std::vector<char>& data, std::streampos position);
