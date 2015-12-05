@@ -24,14 +24,14 @@ PEHeaderParser::PEHeaderParser(COFFHeaderParser&& parser) : COFFHeaderParser(std
 	init();
 }
 
-PEHeaderParser::~PEHeaderParser()
+/*PEHeaderParser::~PEHeaderParser()
 {
 	// Condition needed because we may have moved the parser
 	if (!events_.empty())
 	{
 		events_.pop_back();
 	}
-}
+}*/
 
 size_type PEHeaderParser::retrieveFieldValue(OptionalHeaderField field)
 {

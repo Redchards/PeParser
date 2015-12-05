@@ -202,6 +202,7 @@
     <ClCompile Include="src\DllCharacteristics.cpp" />
     <ClCompile Include="src\dllmain.cpp" />
     <ClCompile Include="src\EpochConverter.cpp" />
+    <ClCompile Include="src\FileStream.cpp" />
     <ClCompile Include="src\FileValueReader.cpp" />
     <ClCompile Include="src\FileValueWriter.cpp" />
     <ClCompile Include="src\GUISubsystem.cpp" />

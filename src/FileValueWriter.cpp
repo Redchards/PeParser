@@ -7,7 +7,7 @@ FileValueWriterBase::FileValueWriterBase(const std::string& filename, std::ios::
 
 void FileValueWriterBase::checkWrite() const
 {
-	if (!fstream_.good())
+	if (!fstream_->good())
 	{
 		throw std::ios_base::failure(std::string("Error when writing data to the file '") + getCurrentFileName() + "' !");
 	}
@@ -15,22 +15,22 @@ void FileValueWriterBase::checkWrite() const
 
 void FileValueWriterBase::adjustPosition(std::streampos position) noexcept
 {
-	if (fstream_.tellp() != position)
+	if (fstream_->tellp() != position)
 	{
-		fstream_.seekp(position);
+		fstream_->seekp(position);
 	}
 }
 
 void FileValueWriterBase::writeRawDataAt(const std::vector<char>& data, std::streampos position)
 {
 	adjustPosition(position);
-	fstream_.write(data.data(), data.size());
+	fstream_->write(data.data(), data.size());
 	checkWrite();
 }
 
 void FileValueWriterBase::writeRawDataAt(const char* const data, std::streamsize size, std::streampos position)
 {
 	adjustPosition(position);
-	fstream_.write(data, size);
+	fstream_->write(data, size);
 	checkWrite();
 }

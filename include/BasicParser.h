@@ -11,6 +11,7 @@ class __declspec(dllexport)  BasicParser
 public:
 	BasicParser(BasicParser&& other);
 	BasicParser(std::string const& filename);
+	~BasicParser() = default;
 	void loadFile(std::string const& filename);
 	void unloadFile();
 	std::string getFileName() const noexcept;

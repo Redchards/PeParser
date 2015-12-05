@@ -44,7 +44,7 @@ class PE_API PEHeaderParser : public COFFHeaderParser
 	PEHeaderParser(PEHeaderParser&&);
 	PEHeaderParser(std::string const& filename);
 	PEHeaderParser(COFFHeaderParser&&);
-	~PEHeaderParser();
+	~PEHeaderParser() = default;
 
 	size_type retrieveFieldValue(OptionalHeaderField field);
 

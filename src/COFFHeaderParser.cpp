@@ -17,14 +17,14 @@ COFFHeaderParser::COFFHeaderParser(std::string const& filename) : BasicParser(fi
 	init();
 }
 
-COFFHeaderParser::~COFFHeaderParser()
+/*COFFHeaderParser::~COFFHeaderParser()
 {
 	// Condition needed because we may have moved the parser
 	if (!events_.empty())
 	{
 		events_.pop_back();
 	}
-}
+}*/
 
 bool COFFHeaderParser::hasDOSSignature()
 {

@@ -18,7 +18,7 @@ public:
 	COFFHeaderParser() = delete;
 	COFFHeaderParser(COFFHeaderParser&& other);
 	COFFHeaderParser(std::string const& filename);
-	virtual ~COFFHeaderParser();
+	~COFFHeaderParser() = default;
 	// the lfanew file is actually in the DOS header, but as PE file do almost not use this header
 	// (it basically only contains the dos signature, lfanew and a stub), I will not create an other
 	// class only to parse this kind of datas
