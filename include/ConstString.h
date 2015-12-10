@@ -205,9 +205,9 @@ public:
 	}
 
 	// Modified to build with visual studio. Gcc and clang do not need recursion, simple if branches and for loop are working.
-	constexpr bool operator==(const ConstString& rhs) const
+	friend constexpr bool operator==(const ConstString& lhs, const ConstString& rhs)
 	{
-		return size() != rhs.size() ? false : equalAux(size(), rhs);
+		return lhs.size() != rhs.size() ? false : equalAux(lhs.size(), lhs, rhs);
 	}
 
 	constexpr operator const char*() const noexcept
@@ -232,10 +232,9 @@ public:
 	constexpr reverse_iterator rend() const noexcept { return begin(); }
 	constexpr const_reverse_iterator crend() const noexcept { return begin(); }
 
-private:
-	constexpr bool equalAux(size_type size, const ConstString& rhs) const
+	friend constexpr bool equalAux(size_type size, const ConstString& lhs, const ConstString& rhs)
 	{
-		return size != 0 ? ((*this)[size - 1] == rhs[size - 1] && equalAux(size - 1, rhs)) : true;
+		return size != 0 ? ((lhs[size - 1] == rhs[size - 1] && equalAux(size - 1, lhs, rhs))) : true;
 	}
 
 private:
@@ -260,24 +259,6 @@ public:
 		return (index < Tsize ? cstr_[index] : throw std::out_of_range("Attempt to access a non-existing index of a constant string"));
 	}
 
-	constexpr bool operator==(StaticString<Tsize> rhs) const
-	{
-		for (uint8_t i = 0; i < size(); ++i)
-		{
-			if ((*this)[i] != rhs[i])
-			{
-				return false;
-			}
-		}
-		return true;
-	}
-
-	template<size_t otherSize>
-	constexpr bool operator==(StaticString<otherSize>) const
-	{
-		return false;
-	}
-
 	constexpr operator const char*() const noexcept
 	{
 		return cstr_;
@@ -299,6 +280,12 @@ public:
 	constexpr const_reverse_iterator crbegin() const noexcept { return end(); }
 	constexpr reverse_iterator rend() const noexcept { return begin(); }
 	constexpr const_reverse_iterator crend() const noexcept { return begin(); }
+
+	template<size_type TSize1, size_type TSize2>
+	constexpr bool equalAux(size_type size, const StaticString<TSize1>& lhs, const StaticString<TSize2>& rhs)
+	{
+		return TSize1 != 0 ? ((lhs[TSize1 - 1] == rhs[TSize1 - 1] && equalAux(TSize1 - 1, lhs, rhs))) : true;
+	}
 
 private:
 	const char* cstr_;

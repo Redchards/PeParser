@@ -1,7 +1,7 @@
 Debug/
 Release/
 .vs/
-PeParser.vcxproj.user
+**/*.vcxproj.user
 ipch/
-PeParser.sdf
+**/*.sdf
 .gitconfig

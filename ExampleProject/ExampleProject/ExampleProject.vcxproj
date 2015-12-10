@@ -19,34 +19,33 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{7A259740-F7E9-4EE9-8C48-534E14578587}</ProjectGuid>
+    <ProjectGuid>{73FF4A62-4A7D-4D21-81E6-7FFE0A3BF467}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>PeParser</RootNamespace>
+    <RootNamespace>OBfister</RootNamespace>
     <TargetPlatformVersion>8.1</TargetPlatformVersion>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -72,46 +71,51 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\Users\Loic\Project\PeParser\PeParser\include;$(IncludePath)</IncludePath>
-    <SourcePath>D:\Users\Loic\Project\PeParser\PeParser\src;$(SourcePath)</SourcePath>
+    <IncludePath>$(SolutionDir)$(ProjectName)\include;$(SolutionDir)..\..\PeParser\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)$(Configuration)\$(PlatformTarget);$(LibraryPath)</LibraryPath>
+    <SourcePath>$(SolutionDir)src;$(SourcePath)</SourcePath>
     <OutDir>$(SolutionDir)$(Configuration)\x86\</OutDir>
-    <ExecutablePath>$(SolutionDir)$(Configuration)\x86;$(ExecutablePath)</ExecutablePath>
+    <ExecutablePath>$(OutDir);$(ExecutablePath)</ExecutablePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\Users\Loic\Project\PeParser\PeParser\include;$(IncludePath)</IncludePath>
-    <SourcePath>D:\Users\Loic\Project\PeParser\PeParser\src;$(SourcePath)</SourcePath>
+    <IncludePath>$(SolutionDir)$(ProjectName)\include;$(SolutionDir)..\..\PeParser\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)$(Configuration)\$(PlatformTarget);$(LibraryPath)</LibraryPath>
+    <SourcePath>$(SolutionDir)src;$(SourcePath)</SourcePath>
     <IntDir>$(Configuration)\</IntDir>
     <OutDir>$(SolutionDir)$(Configuration)\$(Platform)\</OutDir>
+    <ExecutablePath>$(OutDir);$(ExecutablePath)</ExecutablePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>D:\Users\Loic\Project\PeParser\PeParser\include;$(IncludePath)</IncludePath>
-    <SourcePath>D:\Users\Loic\Project\PeParser\PeParser\src;$(SourcePath)</SourcePath>
+    <IncludePath>$(SolutionDir)$(ProjectName)\include;$(SolutionDir)..\..\PeParser\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)$(Configuration)\$(PlatformTarget);$(LibraryPath)</LibraryPath>
+    <SourcePath>$(SolutionDir)src;$(SourcePath)</SourcePath>
     <OutDir>$(SolutionDir)$(Configuration)\x86\</OutDir>
-    <ExecutablePath>$(SolutionDir)$(Configuration)\x86;$(ExecutablePath)</ExecutablePath>
+    <ExecutablePath>$(OutDir);$(ExecutablePath)</ExecutablePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>D:\Users\Loic\Project\PeParser\PeParser\include;$(IncludePath)</IncludePath>
-    <SourcePath>D:\Users\Loic\Project\PeParser\PeParser\src;$(SourcePath)</SourcePath>
+    <IncludePath>$(SolutionDir)$(ProjectName)\include;$(SolutionDir)..\..\PeParser\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)$(Configuration)\$(PlatformTarget);$(LibraryPath)</LibraryPath>
+    <SourcePath>$(SolutionDir)src;$(SourcePath)</SourcePath>
     <IntDir>$(Configuration)\</IntDir>
     <OutDir>$(SolutionDir)$(Configuration)\$(Platform)\</OutDir>
+    <ExecutablePath>$(OutDir);$(ExecutablePath)</ExecutablePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;PEPARSER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <AdditionalOptions>/D "DLL_EXPORT" %(AdditionalOptions)</AdditionalOptions>
-      <RuntimeTypeInfo>false</RuntimeTypeInfo>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>PeParser.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -119,15 +123,14 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;PEPARSER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <AdditionalOptions>/D "DLL_EXPORT" %(AdditionalOptions)</AdditionalOptions>
-      <RuntimeTypeInfo>false</RuntimeTypeInfo>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>PeParser.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -137,18 +140,15 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;PEPARSER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-      <WholeProgramOptimization>true</WholeProgramOptimization>
-      <AdditionalOptions>/D "DLL_EXPORT" %(AdditionalOptions)</AdditionalOptions>
-      <RuntimeTypeInfo>false</RuntimeTypeInfo>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>PeParser.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -158,70 +158,31 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;PEPARSER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-      <AdditionalOptions>/D "DLL_EXPORT" %(AdditionalOptions)</AdditionalOptions>
-      <RuntimeTypeInfo>false</RuntimeTypeInfo>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>PeParser.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="include\BasicParser.h" />
-    <ClInclude Include="include\Characteristics.h" />
-    <ClInclude Include="include\CharToInteger.h" />
-    <ClInclude Include="include\COFFHeaderParser.h" />
-    <ClInclude Include="include\Configuration.h" />
-    <ClInclude Include="include\ConstString.h" />
-    <ClInclude Include="include\DataDirectoryTable.h" />
-    <ClInclude Include="include\DllCharacteristics.h" />
-    <ClInclude Include="include\EpochConverter.h" />
-    <ClInclude Include="include\FileStream.h" />
-    <ClInclude Include="include\FileValueReader.h" />
-    <ClInclude Include="include\FileValueWriter.h" />
-    <ClInclude Include="include\GUISubsystem.h" />
-    <ClInclude Include="include\HeaderField.h" />
-    <ClInclude Include="include\HeaderLayout.h" />
-    <ClInclude Include="include\IteratableEnum.h" />
-    <ClInclude Include="include\Log.h" />
-    <ClInclude Include="include\MachineID.h" />
-    <ClInclude Include="include\PeDataDirectory.h" />
-    <ClInclude Include="include\pefileparser.h" />
-    <ClInclude Include="include\PeHeaderParser.h" />
-    <ClInclude Include="include\SectionCharacteristics.h" />
-    <ClInclude Include="include\SectionHeaderParser.h" />
-    <ClInclude Include="include\SectionParser.h" />
-    <ClInclude Include="include\stdafx.h" />
-    <ClInclude Include="include\targetver.h" />
-    <ClInclude Include="include\Utility.h" />
+    <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\BasicParser.cpp" />
-    <ClCompile Include="src\Characteristics.cpp" />
-    <ClCompile Include="src\COFFHeaderParser.cpp" />
-    <ClCompile Include="src\DllCharacteristics.cpp" />
-    <ClCompile Include="src\dllmain.cpp" />
-    <ClCompile Include="src\EpochConverter.cpp" />
-    <ClCompile Include="src\FileStream.cpp" />
-    <ClCompile Include="src\FileValueReader.cpp" />
-    <ClCompile Include="src\FileValueWriter.cpp" />
-    <ClCompile Include="src\GUISubsystem.cpp" />
-    <ClCompile Include="src\HeaderLayout.cpp" />
-    <ClCompile Include="src\MachineID.cpp" />
-    <ClCompile Include="src\PeFileParser.cpp" />
-    <ClCompile Include="src\PeHeaderParser.cpp" />
-    <ClCompile Include="src\SectionCharacteristics.cpp" />
-    <ClCompile Include="src\SectionHeaderParser.cpp" />
-    <ClCompile Include="src\SectionParser.cpp" />
+    <ClInclude Include="include\stdafx.h" />
+    <ClInclude Include="include\targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\ExampleProject.cpp" />
     <ClCompile Include="src\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
   </ItemGroup>
