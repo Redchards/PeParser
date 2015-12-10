@@ -14,7 +14,7 @@ Data layout of each header is described in the file *HeaderLayout.h*
 # State
 The library is considered in an "usable but highly incomplete" state right now. Some work is still required to be able to develop application like .NET obfuscator or disassembler for examples.
 
-**WARNING** : Right now, the library is only able to parse standard PE files (ignoring the Rich header), and the COFF file. I also want to support "import objects" and "anonymous objects", but I lack informations on these right now (even the winnt.h structur seems to be not correct ...)
+**WARNING** : Right now, the library is only able to parse standard PE files (ignoring the Rich header), and the COFF file. I also want to support "import objects" and "anonymous objects", but I lack informations on these right now (even the winnt.h structures seems to be not correct ...)
 
 # How to use
 Using the library is actually pretty simple. Here is an example of accessing the number of section and the file characteristics from a COFF header parser :
