@@ -72,29 +72,29 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\Users\Loic\Project\PeParser\PeParser\include;$(IncludePath)</IncludePath>
-    <SourcePath>D:\Users\Loic\Project\PeParser\PeParser\src;$(SourcePath)</SourcePath>
+    <IncludePath>$(ProjectDir)include;$(IncludePath)</IncludePath>
+    <SourcePath>$(ProjectDir)src;$(SourcePath)</SourcePath>
     <OutDir>$(SolutionDir)$(Configuration)\x86\</OutDir>
     <ExecutablePath>$(SolutionDir)$(Configuration)\x86;$(ExecutablePath)</ExecutablePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\Users\Loic\Project\PeParser\PeParser\include;$(IncludePath)</IncludePath>
-    <SourcePath>D:\Users\Loic\Project\PeParser\PeParser\src;$(SourcePath)</SourcePath>
+    <IncludePath>$(ProjectDir)include;$(IncludePath)</IncludePath>
+    <SourcePath>$(ProjectDir)src;$(SourcePath)</SourcePath>
     <IntDir>$(Configuration)\</IntDir>
     <OutDir>$(SolutionDir)$(Configuration)\$(Platform)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>D:\Users\Loic\Project\PeParser\PeParser\include;$(IncludePath)</IncludePath>
-    <SourcePath>D:\Users\Loic\Project\PeParser\PeParser\src;$(SourcePath)</SourcePath>
+    <IncludePath>$(ProjectDir)include;$(IncludePath)</IncludePath>
+    <SourcePath>$(ProjectDir)src;$(SourcePath)</SourcePath>
     <OutDir>$(SolutionDir)$(Configuration)\x86\</OutDir>
     <ExecutablePath>$(SolutionDir)$(Configuration)\x86;$(ExecutablePath)</ExecutablePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>D:\Users\Loic\Project\PeParser\PeParser\include;$(IncludePath)</IncludePath>
-    <SourcePath>D:\Users\Loic\Project\PeParser\PeParser\src;$(SourcePath)</SourcePath>
+    <IncludePath>$(ProjectDir)include;$(IncludePath)</IncludePath>
+    <SourcePath>$(ProjectDir)src;$(SourcePath)</SourcePath>
     <IntDir>$(Configuration)\</IntDir>
     <OutDir>$(SolutionDir)$(Configuration)\$(Platform)\</OutDir>
   </PropertyGroup>
